@@ -23,10 +23,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-        auth.inMemoryAuthentication()
-                .passwordEncoder(passwordEncoder)
-                .withUser(SECURE_USERNAME)
-                .password(passwordEncoder.encode(SECURE_PASSWORD))
+        auth.inMemoryAuthentication() //
+                .passwordEncoder(passwordEncoder) //
+                .withUser(SECURE_USERNAME) //
+                .password(passwordEncoder.encode(SECURE_PASSWORD)) //
                 .roles("USER");
 
     }
@@ -34,6 +34,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         super.configure(http);
-        http.csrf().disable();
+        http.csrf().disable(); // cross side request forgery
     }
 }

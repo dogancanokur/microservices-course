@@ -35,6 +35,13 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product updateProduct(Product product) {
+        Product dbProduct = productRepository.findById(product.getId()).orElse(null);
+        if (dbProduct == null) {
+            // todo ...
+            return product;
+        }
+
+        product.setCreateTime(dbProduct.getCreateTime());
         return productRepository.save(product);
     }
 
