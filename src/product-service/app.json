@@ -1,0 +1,8 @@
+{
+  "name": "product-service",
+  "buildpacks": [
+    {
+      "url": "heroku/gradle"
+    }
+  ]
+}
