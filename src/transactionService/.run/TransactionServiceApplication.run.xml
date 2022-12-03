@@ -1,0 +1,17 @@
+<component name="ProjectRunConfigurationManager">
+    <configuration default="false" name="TransactionServiceApplication" type="SpringBootApplicationConfigurationType"
+                   factoryName="Spring Boot" nameIsGenerated="true">
+        <option name="ACTIVE_PROFILES" value="default"/>
+        <module name="transactionService.main"/>
+        <option name="SPRING_BOOT_MAIN_CLASS" value="net.okur.transactionservice.TransactionServiceApplication"/>
+        <extension name="coverage">
+            <pattern>
+                <option name="PATTERN" value="net.okur.transactionservice.*"/>
+                <option name="ENABLED" value="true"/>
+            </pattern>
+        </extension>
+        <method v="2">
+            <option name="Make" enabled="true"/>
+        </method>
+    </configuration>
+</component>
