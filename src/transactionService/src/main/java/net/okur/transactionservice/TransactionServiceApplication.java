@@ -8,8 +8,8 @@ import org.springframework.context.annotation.PropertySource;
 @PropertySource("classpath:application-${spring.profiles.active:default}.properties")
 public class TransactionServiceApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(TransactionServiceApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(TransactionServiceApplication.class, args);
+    }
 
 }
