@@ -3,6 +3,7 @@ package net.okur.gatewayservice.service;
 import net.okur.gatewayservice.model.User;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author dogancan.okur
@@ -14,7 +15,7 @@ public interface IUserService {
 
     User getUserById(Long userId);
 
-    User getUserByUsername(String username);
+    Optional<User> findByUsername(String username);
 
     void deleteUser(Long userId);
 

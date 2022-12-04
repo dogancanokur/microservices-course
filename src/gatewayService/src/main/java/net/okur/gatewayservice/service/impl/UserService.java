@@ -8,6 +8,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author dogancan.okur
@@ -35,7 +36,7 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public User getUserByUsername(String username) {
+    public Optional<User> findByUsername(String username) {
         return userRepository.findUserByUsername(username);
     }
 
