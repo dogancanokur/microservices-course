@@ -12,12 +12,12 @@ import java.util.List;
  */
 public interface IProductServiceRequest {
 
-    @POST("/api/product")
+    @POST("/api/v1/product")
     public Call<JsonElement> saveProduct(@Body JsonElement requestBody);
 
-    @DELETE("/api/product/{productId}")
+    @DELETE("/api/v1/product/{productId}")
     public Call<Void> deleteProduct(@Path("productId") Long productId);
 
-    @GET("/api/product}")
+    @GET("/api/v1/product")
     Call<List<JsonElement>> getAllProducts();
 }

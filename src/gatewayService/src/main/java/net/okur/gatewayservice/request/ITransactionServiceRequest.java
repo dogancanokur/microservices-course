@@ -12,12 +12,12 @@ import java.util.List;
  */
 public interface ITransactionServiceRequest {
 
-    @POST("/api/transaction")
+    @POST("/api/v1/transaction")
     Call<JsonElement> saveTransaction(@Body JsonElement requestBody);
 
-    @DELETE("/api/transaction/{transactionId}")
+    @DELETE("/api/v1/transaction/{transactionId}")
     Call<Void> deleteTransaction(@Path("transactionId") Long transactionId);
 
-    @GET("/api/transaction/{userId}")
+    @GET("/api/v1/transaction/{userId}")
     Call<List<JsonElement>> getAllTransactionOfAuthorizedUser(@Path("userId") Long userId);
 }
