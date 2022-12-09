@@ -22,11 +22,17 @@ public class User {
     @Column(name = "username", length = 30, nullable = false, unique = true)
     private String username;
 
+    @Column(name = "email", length = 100, nullable = false, unique = true)
+    private String email;
+
     @Column(name = "password", nullable = false)
     private String password;
 
     @Column(name = "name", length = 50, nullable = false)
     private String name;
+
+    @Column(name = "surname", length = 50, nullable = false)
+    private String surname;
 
     @Column(name = "create_time")
     @CreatedDate
