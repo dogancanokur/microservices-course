@@ -1,5 +1,6 @@
 package net.okur.productservice.controller;
 
+import io.swagger.annotations.ApiOperation;
 import net.okur.productservice.model.Product;
 import net.okur.productservice.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/product") // pre-path
+@ApiOperation(value = "Product Rest Controller")
 public class ProductRestController {
     private final ProductService productService;
 
@@ -25,12 +27,14 @@ public class ProductRestController {
     }
 
     @GetMapping
+    @ApiOperation(value = "Get All Product")
     public ResponseEntity<?> getAllProduct() {
         List<Product> productList = productService.findAllProducts();
         return ResponseEntity.ok(productList);
     }
 
     @PostMapping // =>  api/v1/product
+    @ApiOperation(value = "Save Product", httpMethod = "POST")
     public ResponseEntity<?> saveProduct(@RequestBody Product product) {
         return new ResponseEntity<>(productService.saveProduct(product), HttpStatus.CREATED);
     }
