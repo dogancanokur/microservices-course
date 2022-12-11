@@ -8,7 +8,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * @author dogancan.okur
@@ -50,5 +52,23 @@ public class ProductRestController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @GetMapping("project-test")
+    public String testEndPoint() {
+        int times = 10000;
 
+        String result = "request start at " + LocalDateTime.now().toString() + " with " + times + " times";
+
+        for (int i = 0; i < times; i++) {
+            Product product = new Product();
+            String name = UUID.randomUUID().toString();
+            product.setName(name);
+            product.setProductCode("code_" + name);
+            double random = Math.random();
+            product.setPrice(random * 20);
+            product.setQuantity((int) (random * 300));
+            product.setCreatedUserId(1L);
+            productService.saveProduct(product);
+        }
+        return result;
+    }
 }

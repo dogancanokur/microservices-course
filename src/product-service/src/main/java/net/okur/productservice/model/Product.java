@@ -3,6 +3,7 @@ package net.okur.productservice.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
@@ -13,7 +14,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "product")
 @Data
-public class Product {
+public class Product implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,21 +31,21 @@ public class Product {
     @Column(name = "quantity", nullable = false)
     private int quantity;
 
-    @Column(name = "create_time", nullable = false)
-    private LocalDateTime createTime;
+//    @Column(name = "create_time", nullable = false)
+//    private LocalDateTime createTime;
 
     @Column(name = "created_user_id", nullable = false)
     private Long createdUserId;
 
-    @Column(name = "update_time")
-    private LocalDateTime updateTime;
+//    @Column(name = "update_time")
+//    private LocalDateTime updateTime;
 
-    @Column(name = "updated_user_id")
-    private Long updatedAt;
+//    @Column(name = "updated_user_id")
+//    private Long updatedAt;
 
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    private Category category;
+//    @ManyToOne
+//    @JoinColumn(name = "category_id")
+//    private Category category;
 
 
 }

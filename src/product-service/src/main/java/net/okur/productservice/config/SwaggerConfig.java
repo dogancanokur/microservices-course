@@ -36,4 +36,4 @@ public class SwaggerConfig {
                 .build();
     }
 
-} q
+}

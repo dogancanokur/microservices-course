@@ -24,6 +24,6 @@ public class Category {
     @Column(name = "created_date_time", nullable = false)
     @CreatedDate
     private LocalDateTime createdDateTime;
-    @OneToMany(mappedBy = "category")
-    private List<Product> productList;
+//    @OneToMany(mappedBy = "category")
+//    private List<Product> productList;
 }

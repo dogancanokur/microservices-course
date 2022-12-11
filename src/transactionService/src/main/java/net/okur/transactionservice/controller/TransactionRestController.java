@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -29,10 +30,17 @@ public class TransactionRestController {
         return ResponseEntity.ok(transactionList);
     }
 
-    @PostMapping("/")
-    public ResponseEntity<?> saveTransaction(@RequestBody Transaction transaction) {
+    @PostMapping("/old")
+    public ResponseEntity<?> saveTransactionOld(@RequestBody Transaction transaction) {
 
         return new ResponseEntity<>(transactionService.saveTransaction(transaction), HttpStatus.CREATED);
+    }
+
+    @PostMapping("/")
+    public ResponseEntity<?> saveTransaction(@RequestBody Transaction transaction) {
+        transactionService.saveTransaction(transaction);
+        System.out.println("done at => " + LocalDateTime.now().toString());
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @DeleteMapping("{transactionId}")

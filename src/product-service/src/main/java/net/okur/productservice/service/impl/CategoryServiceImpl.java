@@ -1,10 +1,11 @@
-package net.okur.productservice.service;
+package net.okur.productservice.service.impl;
 
 import net.okur.productservice.dto.output.CategoryOutput;
 import net.okur.productservice.dto.output.ServiceOutput;
 import net.okur.productservice.model.Category;
 import net.okur.productservice.model.Product;
 import net.okur.productservice.repository.CategoryRepository;
+import net.okur.productservice.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,7 +39,7 @@ public class CategoryServiceImpl implements CategoryService {
         categoryOutput.setStatus(ServiceOutput.Status.SUCCESS);
         categoryOutput.setId(savedCategory.getId());
         categoryOutput.setTitle(savedCategory.getTitle());
-        categoryOutput.setProductList(savedCategory.getProductList());
+//        categoryOutput.setProductList(savedCategory.getProductList());
 
         return categoryOutput;
     }

@@ -27,4 +27,17 @@ public class Transaction {
 
     @Column(name = "transaction_date_time")
     private LocalDateTime transactionDateTime;
+    // todo fix below
+    @Column(name = "name", nullable = false, length = 100)
+    private String name;
+
+    @Column(name = "product_code", nullable = false, unique = true, length = 100)
+    private String productCode;
+
+    @Column(name = "price", nullable = false)
+    private Double price;
+
+    @Column(name = "quantity", nullable = false)
+    private int quantity;
+
 }

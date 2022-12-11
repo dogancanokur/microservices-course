@@ -1,7 +1,9 @@
-package net.okur.productservice.service;
+package net.okur.productservice.service.impl;
 
 import net.okur.productservice.model.Product;
 import net.okur.productservice.repository.ProductRepository;
+import net.okur.productservice.service.ProductConnectionServiceImpl;
+import net.okur.productservice.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,10 +18,12 @@ import java.util.List;
 @Service
 public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
+    private final ProductConnectionServiceImpl productConnectionService;
 
     @Autowired
-    public ProductServiceImpl(ProductRepository productRepository) {
+    public ProductServiceImpl(ProductRepository productRepository, ProductConnectionServiceImpl productConnectionService) {
         this.productRepository = productRepository;
+        this.productConnectionService = productConnectionService;
     }
 
     @Override
@@ -29,8 +33,16 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product saveProduct(Product product) {
-        product.setCreateTime(LocalDateTime.now());
-        return productRepository.save(product);
+//        product.setCreateTime(LocalDateTime.now());
+        product = productRepository.save(product);
+
+        // send to queue - message & with broker topology
+        productConnectionService.sendToQueue(product);
+
+        // send direct - request driven arch
+//        productConnectionService.sendTransaction(product);
+
+        return product;
     }
 
     @Override
@@ -41,7 +53,7 @@ public class ProductServiceImpl implements ProductService {
             return product;
         }
 
-        product.setCreateTime(dbProduct.getCreateTime());
+//        product.setCreateTime(dbProduct.getCreateTime());
         return productRepository.save(product);
     }
 
