@@ -1,0 +1,11 @@
+#  docker-compose -f C:\Users\Dogancan\IdeaProjects\microservices-course\src\rabbitmq\src\main\resources\docker-compose.yaml up -d
+version: '3.1'
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+    environment:
+      - RABBITMQ_DEFAULT_USER=faecon
+      - RABBITMQ_DEFAULT_PASS=passwordfaecon
